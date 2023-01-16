@@ -1,0 +1,34 @@
+{
+  "invalidEmails": [
+    "automation{0}",
+    "automation{0}@example",
+    "automation{0}.@example",
+    "automation{0}@.example",
+    "automation{0}@example.c",
+    "@example.com"
+  ],
+  "invalidPasswords": [
+    " Qwer_12",
+    "Qwer_12 ",
+    "qwer_12",
+    "QWER_12",
+    "a",
+    "A",
+    "@",
+    "12345678",
+    "QWERTYUI",
+    "qwertyui",
+    "@@@@@@@@",
+    "qwer1234",
+    "QWER1234",
+    "@@@@1324",
+    "qwer@@@@",
+    "qwerTYUI"
+  ],
+  "validUser": {
+    "firstName": "Johny{0}",
+    "lastName": "Bravo{0}",
+    "email": "automation{0}@example.com",
+    "password": "Qwerty123@"
+  }
+}

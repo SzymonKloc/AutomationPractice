@@ -13,26 +13,26 @@ using System.Text;
 using System.Threading.Tasks;
 using WebDriverManager;
 
-namespace automationPractice.Tests
+namespace automationPractice.Tests.HomePage
 {
     internal class HomePageTests : BaseTest
     {
-        HomePage homePage;
+        Pages.HomePage homePage;
 
-        [SetUp] 
-        public void SetUp() 
+        [SetUp]
+        public void SetUp()
         {
-            homePage = new HomePage(driver);
+            homePage = new Pages.HomePage(driver);
         }
 
         [Test, Category("Banners")]
         public void YogaBannerBtnRedirection()
         {
             homePage.ClickBtnShopNewYoga();
-            
-            var destinationURL = ConfigurationManager.AppSettings["url"] + PagesUrls.YogaCollection;
+
+            var destinationURL = PagesUrls.HomePage + PagesUrls.YogaCollection;
             var actualUrl = driver.Url;
-            
+
             Assert.That(destinationURL, Is.EqualTo(actualUrl));
         }
 
@@ -41,10 +41,10 @@ namespace automationPractice.Tests
         public void PantsBannerLinkRedirection()
         {
             homePage.ClickLinkShopPants();
-            
-            var destinationURL = ConfigurationManager.AppSettings["url"] + PagesUrls.PantsPromotion;
+
+            var destinationURL = PagesUrls.HomePage + PagesUrls.PantsPromotion;
             var actualUrl = driver.Url;
-            
+
             Assert.That(destinationURL, Is.EqualTo(actualUrl));
         }
 
@@ -52,10 +52,10 @@ namespace automationPractice.Tests
         public void TeesBannerLinkRedirection()
         {
             homePage.ClickLinkShopTees();
-            
-            var destinationURL = ConfigurationManager.AppSettings["url"] + PagesUrls.TeesPromotion;
+
+            var destinationURL = PagesUrls.HomePage + PagesUrls.TeesPromotion;
             var actualUrl = driver.Url;
-            
+
             Assert.That(destinationURL, Is.EqualTo(actualUrl));
         }
 
@@ -63,8 +63,8 @@ namespace automationPractice.Tests
         public void ErinRecommendationsBannerLinkRedirection()
         {
             homePage.ClickLinkShopErinRecommendations();
-            
-            var destinationURL = ConfigurationManager.AppSettings["url"] + PagesUrls.ErinRecommendationsCollection;
+
+            var destinationURL = PagesUrls.HomePage + PagesUrls.ErinRecommendationsCollection;
             var actualUrl = driver.Url;
 
             Assert.That(destinationURL, Is.EqualTo(actualUrl));
@@ -75,7 +75,7 @@ namespace automationPractice.Tests
         {
             homePage.ClickLinkShopPerformance();
 
-            var destinationURL = ConfigurationManager.AppSettings["url"] + PagesUrls.PerformanceCollection;
+            var destinationURL = PagesUrls.HomePage + PagesUrls.PerformanceCollection;
             var actualUrl = driver.Url;
 
             Assert.That(destinationURL, Is.EqualTo(actualUrl));
@@ -87,7 +87,7 @@ namespace automationPractice.Tests
             homePage.ClickSignInLink();
 
             var pageUrl = driver.Url;
-            var expectedUrl = ConfigurationManager.AppSettings["url"] + PagesUrls.SignInPage;
+            var expectedUrl = PagesUrls.HomePage + PagesUrls.SignInPage;
 
             Assert.That(pageUrl, Is.EqualTo(expectedUrl));
         }
@@ -98,17 +98,18 @@ namespace automationPractice.Tests
             homePage.ClickSignUpLink();
 
             var pageUrl = driver.Url;
-            var expectedUrl = ConfigurationManager.AppSettings["url"] + PagesUrls.SignUpPage;
+            var expectedUrl = PagesUrls.HomePage + PagesUrls.SignUpPage;
 
             Assert.That(pageUrl, Is.EqualTo(expectedUrl));
         }
 
         [Test, Category("Navigation")]
-        public void WhatsNewRedirection() { 
+        public void WhatsNewRedirection()
+        {
             homePage.ClickWhatsNewLink();
 
             var pageUrl = driver.Url;
-            var expectedUrl = ConfigurationManager.AppSettings["url"] + PagesUrls.WhatIsNewPage;
+            var expectedUrl = PagesUrls.HomePage + PagesUrls.WhatIsNewPage;
 
             Assert.That(pageUrl, Is.EqualTo(expectedUrl));
         }
@@ -119,7 +120,7 @@ namespace automationPractice.Tests
             homePage.ClickWomenLink();
 
             var pageUrl = driver.Url;
-            var expectedUrl = ConfigurationManager.AppSettings["url"] + PagesUrls.WomenPage;
+            var expectedUrl = PagesUrls.HomePage + PagesUrls.WomenPage;
 
             Assert.That(pageUrl, Is.EqualTo(expectedUrl));
         }
@@ -130,8 +131,8 @@ namespace automationPractice.Tests
             homePage.ClickWomenTopsLi();
 
             var pageUrl = driver.Url;
-            var expectedUrl = ConfigurationManager.AppSettings["url"] + PagesUrls.WomenTopsPage;
-            
+            var expectedUrl = PagesUrls.HomePage + PagesUrls.WomenTopsPage;
+
             Assert.That(pageUrl, Is.EqualTo(expectedUrl));
         }
 
@@ -141,10 +142,10 @@ namespace automationPractice.Tests
             var searchPhrase = "Hero Hoodie";
 
             homePage.Search(searchPhrase);
-            
+
             var searchPage = new SearchResultsPage(driver);
             var titles = searchPage.SearchResultTitles();
-            
+
             Assert.That(searchPhrase, Is.EqualTo(titles[0]));
         }
 
@@ -155,14 +156,14 @@ namespace automationPractice.Tests
             var hotSellers = homePage.GetProducts();
 
             Assert.That(hotSellers.Count, Is.AtLeast(1));
-            foreach(var product in hotSellers)
+            foreach (var product in hotSellers)
             {
                 Assert.That(product.Name, Is.Not.Empty, "Empty string in product name");
                 Assert.That(product.Price.Contains('$'), "No currency ($) symbol in price");
             }
         }
 
-        private static readonly ProductTile Repository = GetRepository<ProductTile>("Tests\\HomePageProductData.json");
+        private static readonly ProductTile Repository = GetRepository<ProductTile>("Tests\\HomePage\\HomePageProductData.json");
 
         [Test, Category("Products")]
         public void ProductTileHasAllElements()
@@ -184,7 +185,7 @@ namespace automationPractice.Tests
         {
             var email = $"john@doe{DateTime.Now.Ticks}.com";
             homePage.EnterEmailForNewsletter(email);
-            homePage.SubscribeToNewsLetter();         
+            homePage.SubscribeToNewsLetter();
 
             Assert.That(homePage.SuccessMsgDisplayed);
         }

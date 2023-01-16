@@ -31,13 +31,16 @@
     <Compile Update="Tests\BaseTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Tests\HomePageTests.cs">
+    <Compile Update="Tests\HomePage\HomePageTests.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Tests\HomePageProductData.json">
+    <None Update="Tests\HomePage\HomePageProductData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tests\CreateAccount\SignUpData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

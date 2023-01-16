@@ -12,7 +12,8 @@ namespace automationPractice.Tests
 {
     internal class BaseTest
     {
-        public IWebDriver driver;
+        protected IWebDriver driver;
+        protected long UniqueNameForTest;
 
         protected static T GetRepository<T>(string partialPath)
         {
@@ -28,6 +29,7 @@ namespace automationPractice.Tests
             InitBrowser(browserName);
             driver.Manage().Window.Maximize();
             driver.Url= ConfigurationManager.AppSettings["url"];
+            UniqueNameForTest = DateTime.Now.Ticks;
         }
 
         [TearDown]
