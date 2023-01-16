@@ -1,16 +1,6 @@
-﻿using AngleSharp.Dom;
-using automationPractice.DTO;
-using NUnit.Framework.Constraints;
+﻿using automationPractice.DTO;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V106.Page;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automationPractice.Pages
 {

@@ -143,7 +143,7 @@ namespace automationPractice.Tests
             homePage.Search(searchPhrase);
             
             var searchPage = new SearchResultsPage(driver);
-            var titles = searchPage.searchResultTitles();
+            var titles = searchPage.SearchResultTitles();
             
             Assert.That(searchPhrase, Is.EqualTo(titles[0]));
         }

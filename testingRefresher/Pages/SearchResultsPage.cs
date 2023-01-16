@@ -16,7 +16,7 @@ namespace automationPractice.Pages
 
          IList<IWebElement> productsTilesTitles => driver.FindElements(By.CssSelector("li.product-item .product-item-name a"));
 
-        public List<string> searchResultTitles()
+        public List<string> SearchResultTitles()
         {
             var productsTitles = new List<string>();
             foreach(var link in productsTilesTitles)

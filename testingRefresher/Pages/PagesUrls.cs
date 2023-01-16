@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace automationPractice.Pages
+﻿namespace automationPractice.Pages
 {
     public static class PagesUrls
     {
@@ -35,11 +29,5 @@ namespace automationPractice.Pages
         public static string WomenBrasPage => "women/tops-women/tanks-women.html";
 
         public static string WomenTopsPage => "women/tops-women.html";
-        
-
-
-
-
-
     }
 }
